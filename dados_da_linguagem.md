@@ -1,30 +1,34 @@
-Opções:
-	talkei?
-	gloriadeux!
-	companheiro
-	gandedia!
-	reparebem
-	impeachment
-	estocar
-	vento/mandioca
-	egolpe
-	lulalivre	
-	elenao	 
-	spc
-	dobrarameta
+# Dados da linguagem
+
+## Opções de memes para usar:
+* taokei?
+* gloria a deux!
+* companheiro,
+* grande dia!
+* repare bem
+* impeachment
+* estocar vento / mandioca
+* é golpe
+* lula livre!	
+* ele não	 
+* spc
+* dobrar a meta
 	
-Funções -------------------------------------
-	def - reparebem
-	for - companheiro
-	if/else - talkei?/elenao!
-	return - lulalivre!
-	print - grandedia!
-	input - estocar
-	int/float/str - vento/dobrarameta/mandioca
-	begin/end - 4anos/impeachment
+## Memes para cada comando:
+* def - repare bem
+* for - companheiro
+* if / else - taokei? / ele nao!
+* return - lula livre!
+* print - grande dia!
+* input - estocar
+* int / float / str - vento / dobrar a meta / mandioca
+* begin/end - 4 anos / impeachment
 
-Fatorial ------------------------------------
+## Funções possíveis
+### Fatorial 
 
+* Em python:
+```
 def fatorial(n):
     if n == 0:
         return 0
@@ -32,8 +36,11 @@ def fatorial(n):
         return 1
     if n > 1:
         return f(n - 1) * n
+```
 
+* Em spam:
 
+```
 reparebem fatorial(vento x)	
 4anos
 	x == 0 talkei? 
@@ -49,17 +56,23 @@ reparebem fatorial(vento x)
 		fatorial(x - 1) * x lulalivre!
 	impeachment
 impeachment
+```
 
-Fibonacci -----------------------------------
+### Fibonacci
 
+* Em python:
+
+```
 def Fibonacci(n):
     if n <= 1:
         return n
     else:
         return Fibonacci(n-1) + Fibonacci(n-2)
 print('Fibonacci = ' + str(Fibonacci(10)) )
+```
+* Em spam:
 
-
+```
 repare bem fib(vento x)	
 4 anos
 	x<=1, talkei? 
@@ -72,7 +85,8 @@ repare bem fib(vento x)
 	impeachment
 	('fib = x') grande dia! 
 impeachment
+```
 
-Operações básicas 
+### Operações básicas 
 
-+-*/
+* ( + / - / * / ÷ )
