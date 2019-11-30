@@ -1,0 +1,35 @@
+?start  : cmd*
+
+?cmd : ifcmd
+     | simplecmd
+     // function, while, for, return, etc
+
+ifcmd : expr "," ("taokei" | "tah" "okey") "?" block
+
+block : "4" "anos" cmd* "impeachment"
+
+simplecmd : expr ";"
+
+
+?expr : atom
+      | "(" atom ")"
+      | call
+
+call : SYMBOL "(" args? ")"
+
+args : expr ("," expr)*
+
+?atom   : INT    -> int
+        | FLOAT  -> float
+        | SYMBOL -> symbol
+        | STRING -> string
+        
+
+// Terminais
+SYMBOL  : /[a-zA-Z-_][\w_]*/
+STRING    : /\"[^\"\\]*(\\[^\n\t\r\f][^\"\\]*)*\"/
+INT     : /-?\d+/
+FLOAT   : /-?\d+\.\d+/
+
+%ignore /\s+/
+%ignore /\/\/[^\n]*/
