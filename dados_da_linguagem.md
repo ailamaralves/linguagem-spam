@@ -1,6 +1,6 @@
 # Dados da linguagem
 
-## Opções de memes para usar:
+## Possíveis memes para usar:
 * taokei?
 * gloria a deux!
 * companheiro,
@@ -16,19 +16,21 @@
 	
 ## Memes para cada comando:
 * def - repare bem
-* for - companheiro
+* for - companheiro / é golpe
 * if / else - taokei? / ele nao!
+* while - gloria a deux
 * return - lula livre!
 * print - grande dia!
 * input - estocar
 * int / float / str - vento / dobrar a meta / mandioca
-* begin/end - 4 anos / impeachment
+* begin / end - 4 anos / impeachment
 
-## Funções possíveis
+## Funções que a linguagem alcança
 ### Fatorial 
 
 * Em python:
 ```
+// recursiva
 def fatorial(n):
     if n == 0:
         return 0
@@ -36,26 +38,48 @@ def fatorial(n):
         return 1
     if n > 1:
         return f(n - 1) * n
+// iterativa
+def main():
+    n = int(input("Digite o valor de n: "))
+    fat = 1
+    i = 2
+    while i <= n:
+        fat = fat*i
+        i = i + 1
+    print("O valor de %d! eh =" %n, fat)
 ```
 
 * Em spam:
 
 ```
-reparebem fatorial(vento x)	
-4anos
+// recursiva
+repare bem fatorial(x):	
+4 anos
 	x == 0 talkei? 
 	4anos
-		0 lulalivre!
+		0 lula livre!
 	impeachment
 	x == 1 talkei?
 	4anos
-		1 lulalivre!
+		1 lula livre!
 	impeachment
 	x > 1 talkei?
 	4anos
-		fatorial(x - 1) * x lulalivre!
+		fatorial(x - 1) * x lula livre!
 	impeachment
 impeachment
+
+// iterativa
+repare bem main():
+	4
+	n = int(input("Digite o valor de n: "))
+    fat = 1
+    i = 2
+	companheiro, i <= n é golpe!
+		fat = fat*1
+		i = i + 1
+	("O valor de %d eh =" %n, fat) grande dia!
+	imp
 ```
 
 ### Fibonacci
@@ -73,11 +97,11 @@ print('Fibonacci = ' + str(Fibonacci(10)) )
 * Em spam:
 
 ```
-repare bem fib(vento x)	
+repare bem fib(x):	
 4 anos
 	x<=1, talkei? 
 	4 anos
-		(x)lulalivre!
+		(x) lula livre!
 	impeachment
 	ele nao!
 	4 anos
@@ -90,3 +114,29 @@ impeachment
 ### Operações básicas 
 
 * ( + / - / * / ÷ )
+
+
+### For
+
+* Em python:
+```
+def teste(arg, *args):
+	print('primeiro argumento normal: {}'.format(arg))
+	for arg in args:
+		print('outro argumento: {}'.format(arg))
+teste('python', 'é', 'muito', 'legal')
+```
+
+* Em spam:
+
+```
+repare bem teste(arg, *args):
+4 anos
+	('primeiro argumento normal: {}'.format(arg)) grande dia!
+	companheiro, arg in args é golpe!
+	4
+		('outro argumento: {}'.format(arg)) grande dia!
+	imp
+imp
+teste('python', 'é', 'muito', 'legal')
+```

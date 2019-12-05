@@ -1,35 +1,56 @@
 ?start  : cmd*
 
 ?cmd : ifcmd
+     | forcmd
+     | whilecmd
+     | returncmd
+     | printcmd
+     | defcmd
      | simplecmd
-     // function, while, for, return, etc
 
-ifcmd : expr "," ("taokei" | "tah" "okey") "?" block
+ifcmd : expr "," ("taokei" | "talkei") "?" block
 
-block : "4" "anos" cmd* "impeachment"
+forcmd : "companheiro" "," expr "é" "golpe" "!"
+
+whilecmd : "(" expr ")" "gloria" "a" "deux" "!"
+
+returncmd : expr "lula" "livre" "!"
+
+printcmd : "(" expr ")" "grande" "dia" "!"
+
+defcmd : "repare" "bem" atom "(" atom ")" ":" block
+
+block : ("4" "anos" | "4") cmd* ("impeachment" | "imp" )
 
 simplecmd : expr ";"
 
-
 ?expr : atom
-      | "(" atom ")"
+      | "(" atom* ")"
+      | atom "em" SYMBOL
+      | comp
       | call
+
+?comp : atom "==" atom
+      | atom ">" atom
+      | atom ">=" atom
+      | atom "<" atom
+      | atom "<=" atom
 
 call : SYMBOL "(" args? ")"
 
 args : expr ("," expr)*
 
-?atom   : INT    -> int
-        | FLOAT  -> float
-        | SYMBOL -> symbol
-        | STRING -> string
+?atom   : INT    -> vento
+        | FLOAT  -> dobrarameta
+        | SYMBOL -> nome
+        | STRING -> mandioca
         
-
 // Terminais
 SYMBOL  : /[a-zA-Z-_][\w_]*/
 STRING    : /\"[^\"\\]*(\\[^\n\t\r\f][^\"\\]*)*\"/
 INT     : /-?\d+/
 FLOAT   : /-?\d+\.\d+/
+OP      : /[+-*\/><]/
 
 %ignore /\s+/
 %ignore /\/\/[^\n]*/
