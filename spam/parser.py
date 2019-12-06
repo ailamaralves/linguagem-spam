@@ -4,24 +4,28 @@ from pathlib import Path
 from .runtime import Symbol
 
 
-class LispTransformer(InlineTransformer):
+class SpamTransformer(InlineTransformer):
     def start(self, *args): 
-        return [Symbol.BEGIN, *args]  # (begin x1 x2 x3 ...)
+        return ["module", *args]  # (begin x1 x2 x3 ...)
 
-    def int(self, i):
+    def vento(self, i):
         return int(i)
 
-    def float(self, f):
+    def dobrarameta(self, f):
         return float(f)
 
-    def symbol(self, x):
+    def nome(self, x):
         return Symbol(x)
 
-    def string(self, x):
+    def mandioca(self, x):
         return str(x)[1:-1].replace(r"\n", "\n").replace(r"\t", "\t").replace(r"\"", "\"")
 
     def list(self, *args): # *args passa um numero nao contabilizado de argumentos, transformando-os numa lista
-        return list(args)    
+        return list(args)   
+
+    def simplecmd(self, expr):
+        return ['simplecmd', expr] 
+
 
 def parse(src: str):
     """
@@ -37,7 +41,7 @@ def _make_grammar():
 
     path = Path(__file__).parent / 'grammar.lark'
     with open(path) as fd:
-        grammar = Lark(fd, parser='lalr', transformer=LispTransformer())
+        grammar = Lark(fd, parser='lalr', transformer=SpamTransformer())
     return grammar
 
 parser = _make_grammar()

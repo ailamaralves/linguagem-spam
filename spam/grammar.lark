@@ -1,4 +1,4 @@
-?start  : cmd*
+start  : cmd*
 
 ?cmd : ifcmd
      | forcmd
@@ -54,8 +54,8 @@ args : expr ("," expr)*
         | STRING -> mandioca
         
 // Terminais
-NOME  : /[a-zA-Z-_][\w_]*/
-STRING    : /\"[^\"\\]*(\\[^\n\t\r\f][^\"\\]*)*\"/
+NOME    : /[a-zA-Z_][\w_-]*/
+STRING  : /\"[^\"\\]*(\\[^\n\t\r\f][^\"\\]*)*\"/
 INT     : /-?\d+/
 FLOAT   : /-?\d+\.\d+/
 OP      : /[+-*\/><]/
