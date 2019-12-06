@@ -1,4 +1,4 @@
-from lispy import var, env, Symbol, parse, eval, global_env
+from spam import var, env, Symbol, parse, eval, global_env
 
 run = lambda src, env=None: eval(parse(src), env)
 x, y, a, b, c, f, g, h, op = map(Symbol, 'x y a b c f g h op'.split())

@@ -4,9 +4,9 @@ build-backend = "flit.buildapi"
 
 
 [tool.flit.metadata]
-module = "lispy"
-dist-name = "lispy-fabio"
-author = "Fábio Macêdo Mendes"
+module = "spam"
+dist-name = "spam-lang"
+author = "Spam Group"
 author-email = "fabiomacedomendes@gmail.com"
 home-page = "http://github.com/fabiommendes/lispy/"
 classifiers = ["License :: OSI Approved :: MIT License"]
@@ -17,4 +17,4 @@ requires = [
 
 
 [tool.flit.scripts]
-lispy = "lispy.__main__:main"
+spam = "spam.__main__:main"
