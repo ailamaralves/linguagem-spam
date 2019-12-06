@@ -1,6 +1,6 @@
 # Linguagem Spam
 
-## Integrantes:
+## Integrantes
 
 S - 17/0045269 - Sara Paula Lima Campos
 
