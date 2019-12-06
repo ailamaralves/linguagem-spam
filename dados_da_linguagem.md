@@ -38,6 +38,7 @@ def fatorial(n):
         return 1
     if n > 1:
         return f(n - 1) * n
+
 // iterativa
 def main():
     n = int(input("Digite o valor de n: "))
@@ -120,23 +121,18 @@ impeachment
 
 * Em python:
 ```
-def teste(arg, *args):
-	print('primeiro argumento normal: {}'.format(arg))
-	for arg in args:
-		print('outro argumento: {}'.format(arg))
-teste('python', 'é', 'muito', 'legal')
+nomes = ['Pedro', 'João', 'Leticia']
+for n in nomes:
+     print(n)
 ```
 
 * Em spam:
 
 ```
-repare bem teste(arg, *args):
-4 anos
-	('primeiro argumento normal: {}'.format(arg)) grande dia!
-	companheiro, arg in args é golpe!
-	4
-		('outro argumento: {}'.format(arg)) grande dia!
-	imp
+nomes = ['Pedro', 'João', 'Leticia']
+companheiro, n em nomes é golpe!
+4
+	(n) grande dia!
 imp
-teste('python', 'é', 'muito', 'legal')
 ```
+
