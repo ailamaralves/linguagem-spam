@@ -11,7 +11,6 @@ def parse_expr(src):
     assert cmd[0] == "simplecmd"
     return cmd[1]
 
-
 def parse_cmd(src):
     mod = parse(src)
     assert len(mod) == 2
@@ -25,28 +24,28 @@ class TestSpamGrammar:
         assert parse_expr('-3.14') == -3.14
 
     def _test_atomic(self):
-        assert parse('#t') is True
-        assert parse('#f') is False
-        assert parse('x') == x
-        assert parse('+') == Symbol('+')
+        # assert parse('#t') is True
+        # assert parse('#f') is False
+        assert parse_expr('x') == x
+        assert parse_expr('+') == Symbol('+')
 
-    def _test_strings(self):
-        assert parse('"foobar"') == "foobar"
-        assert parse('"foo bar"') == "foo bar"
-        assert parse(r'"foo\nbar"') == "foo\nbar"
-        assert parse(r'"foo\tbar"') == "foo\tbar"
-        assert parse(r'"foo\tbar"') == "foo\tbar"
-        assert parse(r'"foo\"bar\""') == "foo\"bar\""
+    def test_strings(self):
+        assert parse_expr('"foobar"') == "foobar"
+        assert parse_expr('"foo bar"') == "foo bar"
+        assert parse_expr(r'"foo\nbar"') == "foo\nbar"
+        assert parse_expr(r'"foo\tbar"') == "foo\tbar"
+        assert parse_expr(r'"foo\tbar"') == "foo\tbar"
+        assert parse_expr(r'"foo\"bar\""') == "foo\"bar\""
 
-    def _test_list(self):
-        assert parse('(+ 1 2)') == [Symbol.ADD, 1, 2]
-        assert parse('(1 2 3 4)') == [1, 2, 3, 4]
-        assert parse('(func)') == [Symbol('func'),]
-        assert parse('()') == []
+    def test_list(self):
+        assert parse_expr('[1, 2]') == [1, 2]
+        assert parse_expr('[1, 2, 3, 4]') == [1, 2, 3, 4]
+        assert parse_expr('["Pedro", "Ailamar", "Matheus"]') == ["Pedro", "Ailamar", "Matheus"]
+        assert parse_expr('[]') == []
 
-    def _test_nested_list(self):
-        assert parse('(1 (2 (3 4)))') == [1, [2, [3, 4]]]
-        assert parse('((1 2 3))') == [[1, 2, 3]]
+    def test_nested_list(self):
+        assert parse_expr('[1, [2, [3, 4]]]') == [1, [2, [3, 4]]]
+        assert parse_expr('[[1, 2, 3]]') == [[1, 2, 3]]
 
 
 class TestEnvCreation:
