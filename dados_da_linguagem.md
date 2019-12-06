@@ -89,16 +89,16 @@ repare bem main():
 
 ```
 def Fibonacci(n):
-    if n <= 1:
-        return n
-    else:
-        return Fibonacci(n-1) + Fibonacci(n-2)
+	if n <= 1:
+        	return n
+	else:
+        	return Fibonacci(n-1) + Fibonacci(n-2)
 print('Fibonacci = ' + str(Fibonacci(10)) )
 ```
 * Em spam:
 
 ```
-repare bem fib(x):	
+repare bem Fibonacci(x):	
 4 anos
 	x<=1, talkei? 
 	4 anos
@@ -106,9 +106,9 @@ repare bem fib(x):
 	impeachment
 	ele nao!
 	4 anos
-		(fib(x-1) + fib(x-2)) lula livre!
+		(Fibonacci(x-1) + Fibonacci(x-2)) lula livre!
 	impeachment
-	('fib = x') grande dia! 
+	('Fibonacci = x') grande dia! 
 impeachment
 ```
 
@@ -123,7 +123,7 @@ impeachment
 ```
 nomes = ['Pedro', 'João', 'Leticia']
 for n in nomes:
-     print(n)
+	print(n)
 ```
 
 * Em spam:
