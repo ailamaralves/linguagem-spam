@@ -11,6 +11,7 @@ def parse_expr(src):
     assert cmd[0] == "simplecmd"
     return cmd[1]
 
+
 def parse_cmd(src):
     mod = parse(src)
     assert len(mod) == 2
@@ -27,7 +28,6 @@ class TestSpamGrammar:
         assert parse_expr('#t') is True
         assert parse_expr('#f') is False
         assert parse_expr('x') == x
-        #assert parse_expr('+') == Symbol('+')
 
     def test_strings(self):
         assert parse_expr('"foobar"') == "foobar"
@@ -40,13 +40,18 @@ class TestSpamGrammar:
     def test_list(self):
         assert parse_expr('[1, 2]') == [1, 2]
         assert parse_expr('[1, 2, 3, 4]') == [1, 2, 3, 4]
-        assert parse_expr('["Pedro", "Ailamar", "Matheus"]') == ["Pedro", "Ailamar", "Matheus"]
+        assert parse_expr('["Sara", "Pedro", "Ailamar", "Matheus"]') == ["Sara", "Pedro", "Ailamar", "Matheus"]
         assert parse_expr('[]') == []
 
     def test_nested_list(self):
         assert parse_expr('[1, [2, [3, 4]]]') == [1, [2, [3, 4]]]
         assert parse_expr('[[1, 2, 3]]') == [[1, 2, 3]]
 
+    def test_atrib(self):
+        assert parse_cmd('x = 2;') == ['atrib', 'x', 2]
+        assert parse_cmd('x = 2 + 1;') == ['atrib', 'x', ["operation", 2, 1]]
+        assert parse_cmd('x = 2 + y;') == ['atrib', 'x', ["operation", 2, y]]
+        
 
 class TestEnvCreation:
     def _test_env_creation(self):

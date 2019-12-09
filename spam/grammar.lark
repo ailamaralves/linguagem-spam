@@ -25,16 +25,19 @@ block : ("4" "anos" | "4") cmd* ("impeachment" | "imp" )
 
 simplecmd : expr ";"
 
-atrib : NOME "=" simplecmd 
+atrib : NOME "=" expr ";"
 
 ?expr : atom 
       | "(" atom ")"
       | comp
       | call
       | list
+      | operation
 
 list : "[" expr ("," expr)* "]"
      | "[" "]"
+
+operation : expr OP expr
 
 ?comp : expr "==" expr
       | expr ">" expr
@@ -56,13 +59,13 @@ args : expr ("," expr)*
         | FALSE  -> false
         
 // Terminais
-NOME    : /[a-zA-Z_][\w_-]*/
+NOME    : /[a-zA-Z_][\w_]*/
 STRING  : /\"[^\"\\]*(\\[^\n\t\r\f][^\"\\]*)*\"/
 INT     : /-?\d+/
 FLOAT   : /-?\d+\.\d+/
-TRUE      : /\#t/
-FALSE     : /\#f/
-OP      : /[+-*\/><]/
+TRUE    : /\#t/
+FALSE   : /\#f/
+OP      : /[-+*\/]/
 
 %ignore /\s+/
 %ignore /\/\/[^\n]*/
