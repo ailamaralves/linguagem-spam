@@ -1,3 +1,5 @@
+import io
+import contextlib
 from spam import var, env, Symbol, parse, eval, global_env
 
 run = lambda src, env=None: eval(parse(src), env)
@@ -11,11 +13,16 @@ def parse_expr(src):
     assert cmd[0] == "simplecmd"
     return cmd[1]
 
-
 def parse_cmd(src):
     mod = parse(src)
     assert len(mod) == 2
     return mod[1]
+
+def check_print(src):
+    stdout = io.StringIO()
+    with contextlib.redirect_stdout(stdout):
+        run(src)
+    return stdout.getvalue()
 
 
 class TestSpamGrammar:
@@ -51,7 +58,10 @@ class TestSpamGrammar:
         assert parse_cmd('x = 2;') == ['atrib', 'x', 2]
         assert parse_cmd('x = 2 + 1;') == ['atrib', 'x', ["operation", 2, 1]]
         assert parse_cmd('x = 2 + y;') == ['atrib', 'x', ["operation", 2, y]]
-        
+
+    def test_if(self):
+        assert parse_cmd('x == 2, talkei? 4 x = 42; imp') == ['ifcmd', [...], ['block', ...]]
+
 
 class TestEnvCreation:
     def _test_env_creation(self):
@@ -66,7 +76,7 @@ class TestRuntime:
         assert run('42') == 42
 
     def _test_eval_if_simple(self):
-        assert run('(if #t 42 0)') == 42
+        assert check_print('x == 2, talkei? 4 ()"hello") grande dia! imp')
         assert run('(if #f 42 0)') == 0
 
     def _test_eval_if_nested(self):
