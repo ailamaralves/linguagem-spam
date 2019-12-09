@@ -29,8 +29,32 @@ class SpamTransformer(InlineTransformer):
     def list(self, *args): # *args passa um numero nao contabilizado de argumentos, transformando-os numa lista
         return list(args)   
 
-    def simplecmd(self, expr):
-        return ['simplecmd', expr] 
+    def simplecmd(self, expr, block):
+        return ['simplecmd', expr, block] 
+
+    def ifcmd(self, expr):
+        return ['ifcmd', expr] 
+
+    def forcmd(self, expr):
+        return ['forcmd', expr] 
+
+    def whilecmd(self, expr):
+        return ['whilecmd', expr] 
+
+    def returncdm(self, expr):
+        return ['returncmd', expr] 
+
+    def printcmd(self, expr):
+        return ['printcmd', expr] 
+
+    def defcmd(self, atom, expr):
+        return ['defcmd', atom, expr] 
+
+    def block(self, cmd):
+        return ['block', cmd] 
+
+    def atrib(self, simplecmd):
+        return ['atrib', simplecmd] 
 
 
 def parse(src: str):
