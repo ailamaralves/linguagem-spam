@@ -52,12 +52,16 @@ args : expr ("," expr)*
         | FLOAT  -> dobrarameta
         | NOME   -> nome
         | STRING -> mandioca
+        | TRUE   -> true
+        | FALSE  -> false
         
 // Terminais
 NOME    : /[a-zA-Z_][\w_-]*/
 STRING  : /\"[^\"\\]*(\\[^\n\t\r\f][^\"\\]*)*\"/
 INT     : /-?\d+/
 FLOAT   : /-?\d+\.\d+/
+TRUE      : /\#t/
+FALSE     : /\#f/
 OP      : /[+-*\/><]/
 
 %ignore /\s+/

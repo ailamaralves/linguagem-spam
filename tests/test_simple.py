@@ -23,11 +23,11 @@ class TestSpamGrammar:
         assert parse_expr('3.14') == 3.14
         assert parse_expr('-3.14') == -3.14
 
-    def _test_atomic(self):
-        # assert parse('#t') is True
-        # assert parse('#f') is False
+    def test_atomic(self):
+        assert parse_expr('#t') is True
+        assert parse_expr('#f') is False
         assert parse_expr('x') == x
-        assert parse_expr('+') == Symbol('+')
+        #assert parse_expr('+') == Symbol('+')
 
     def test_strings(self):
         assert parse_expr('"foobar"') == "foobar"
