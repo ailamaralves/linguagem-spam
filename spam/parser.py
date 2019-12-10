@@ -32,6 +32,7 @@ class SpamTransformer(InlineTransformer):
     def simplecmd(self, expr):
         return ['simplecmd', expr] 
 
+<<<<<<< HEAD
     def ifcmd(self, expr, block, elsecmd):
         return ['ifcmd', expr, block, elsecmd] 
 
@@ -40,18 +41,25 @@ class SpamTransformer(InlineTransformer):
 
     def forcmd(self, expr):
         return ['forcmd', expr] 
+=======
+    def ifcmd(self, expr, block, elsecmd=None):
+        return ['ifcmd', expr, block] 
+
+    def forcmd(self, name, expr):
+        return ['forcmd', str(name), expr] 
+>>>>>>> cd566222e19e6988ca13c38fccbf932dc55e3e19
 
     def whilecmd(self, expr):
         return ['whilecmd', expr] 
 
-    def returncdm(self, expr):
+    def returncmd(self, expr):
         return ['returncmd', expr] 
 
     def printcmd(self, expr):
         return ['printcmd', expr] 
 
-    def defcmd(self, atom, expr):
-        return ['defcmd', atom, expr]
+    def defcmd(self, atom1, atom2, expr):
+        return ['defcmd', atom1, atom2, expr]
 
     def block(self, cmd):
         return ['block', cmd]
@@ -61,6 +69,9 @@ class SpamTransformer(InlineTransformer):
 
     def operation(self, left, op, right):
         return ['operation', left, right]
+
+    def comp(self, left, right):
+        return ['comp', left, right]
 
 def parse(src: str):
     """
