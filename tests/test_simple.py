@@ -77,6 +77,10 @@ class TestSpamGrammar:
         assert parse_cmd('companheiro , teste em x < 2 é golpe!') == ['forcmd', 'teste', ['comp', x, 2]]
         assert parse_cmd('companheiro , lista em y < x é golpe!') == ['forcmd', 'lista', ['comp', y, x]]
 
+    def test_while(self):
+        assert parse_cmd('(x > 2) gloria a deux!') == ['whilecmd', ['comp', x, 2]]
+        assert parse_cmd('(y == 0) gloria a deux!') == ['whilecmd', ['comp', y, 0]]
+
 
 class TestEnvCreation:
     def _test_env_creation(self):
