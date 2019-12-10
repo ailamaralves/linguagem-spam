@@ -32,22 +32,14 @@ class SpamTransformer(InlineTransformer):
     def simplecmd(self, expr):
         return ['simplecmd', expr] 
 
-<<<<<<< HEAD
-    def ifcmd(self, expr, block, elsecmd):
-        return ['ifcmd', expr, block, elsecmd] 
+    def ifcmd(self, expr, block, elsecmd=None):
+        return ['ifcmd', expr, block]
 
     def elsecmd(self, block):
-        return ['ifcmd', block] 
-
-    def forcmd(self, expr):
-        return ['forcmd', expr] 
-=======
-    def ifcmd(self, expr, block, elsecmd=None):
-        return ['ifcmd', expr, block] 
+        return ['elsecmd', block] 
 
     def forcmd(self, name, expr):
         return ['forcmd', str(name), expr] 
->>>>>>> cd566222e19e6988ca13c38fccbf932dc55e3e19
 
     def whilecmd(self, expr):
         return ['whilecmd', expr] 
