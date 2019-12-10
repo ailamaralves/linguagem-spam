@@ -47,8 +47,8 @@ class SpamTransformer(InlineTransformer):
     def printcmd(self, expr):
         return ['printcmd', expr] 
 
-    def defcmd(self, atom, expr):
-        return ['defcmd', atom, expr]
+    def defcmd(self, atom1, atom2, expr):
+        return ['defcmd', atom1, atom2, expr]
 
     def block(self, cmd):
         return ['block', cmd]
