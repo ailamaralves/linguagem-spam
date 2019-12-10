@@ -8,7 +8,7 @@ module = "spam"
 dist-name = "spam-lang"
 author = "Spam Group"
 author-email = "ailamar.alvesg@gmail.com, mam.macacod@gmail.com, pedrovscella@gmail.com, s.paula1906@gmail.com "
-home-page = "http://github.com/fabiommendes/lispy/"
+home-page = "https://github.com/ailamaralves/linguagem-spam"
 classifiers = ["License :: OSI Approved :: MIT License"]
 requires = [
     "click",
