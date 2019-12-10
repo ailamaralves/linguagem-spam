@@ -59,8 +59,13 @@ class TestSpamGrammar:
         assert parse_cmd('x = 2 + 1;') == ['atrib', 'x', ["operation", 2, 1]]
         assert parse_cmd('x = 2 + y;') == ['atrib', 'x', ["operation", 2, y]]
 
-    def _test_if(self):
-        assert parse_cmd('x == 2, talkei? 4 x = 42; imp') == ['ifcmd', [...], ['block', ...]]
+    def test_if(self):
+        assert parse_cmd('x == 2, talkei? 4 x = 42; imp') == ['ifcmd', ['comp', x, 2], ['block', ['atrib', 'x', 42]]]
+
+    def test_return(self):
+        assert parse_cmd('#t lula livre!') == ['returncmd', True]
+        assert parse_cmd('2 lula livre!') == ['returncmd', 2]
+        assert parse_cmd('x lula livre!') == ['returncmd', x]
 
 
 class TestEnvCreation:
@@ -73,7 +78,7 @@ class TestEnvCreation:
 
 class TestRuntime:
     def _test_eval_simple(self):
-        assert run('42') == 42
+        assert run('42;') == 42
 
     def _test_eval_if_simple(self):
         assert check_print('x == 2, talkei? 4 ()"hello") grande dia! imp')
