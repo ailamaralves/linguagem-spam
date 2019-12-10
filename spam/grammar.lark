@@ -1,6 +1,7 @@
 start  : cmd*
 
 ?cmd : ifcmd
+     | elsecmd
      | forcmd
      | whilecmd
      | returncmd
@@ -9,7 +10,9 @@ start  : cmd*
      | simplecmd
      | atrib
 
-ifcmd : expr "," ("taokei" | "talkei") "?" block //elsecmd?
+ifcmd : expr "," ("taokei" | "talkei") "?" block elsecmd?
+
+elsecmd : "ele" "não" "!" block
 
 forcmd : "companheiro" "," NOME "em" expr "é" "golpe" "!"
 
