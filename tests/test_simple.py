@@ -73,6 +73,10 @@ class TestSpamGrammar:
     def test_def(self):
         assert parse_cmd('repare bem x (1): 4 x = 42; imp') == ['defcmd', x, 1, ['block', ['atrib','x', 42]]]
 
+    def test_for(self):
+        assert parse_cmd('companheiro , teste em x < 2 é golpe!') == ['forcmd', 'teste', ['comp', x, 2]]
+        assert parse_cmd('companheiro , lista em y < x é golpe!') == ['forcmd', 'lista', ['comp', y, x]]
+
 
 class TestEnvCreation:
     def _test_env_creation(self):
