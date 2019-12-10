@@ -9,7 +9,7 @@ start  : cmd*
      | simplecmd
      | atrib
 
-ifcmd : expr "," ("taokei" | "talkei") "?" block
+ifcmd : expr "," ("taokei" | "talkei") "?" block //elsecmd?
 
 forcmd : "companheiro" "," NOME "em" expr "é" "golpe" "!"
 

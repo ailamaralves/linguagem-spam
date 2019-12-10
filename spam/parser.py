@@ -57,7 +57,7 @@ class SpamTransformer(InlineTransformer):
         return ['atrib', str(name), expr]
 
     def operation(self, left, op, right):
-        return [...]
+        return ['operation', left, right]
 
 def parse(src: str):
     """
