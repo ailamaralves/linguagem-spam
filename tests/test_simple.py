@@ -119,6 +119,13 @@ class TestRuntime:
     def test_def(self):
         assert run('repare bem y (x): 4 nota = 10.00; imp') ==['module', ['defcmd', y, x, ['block', ['atrib', 'nota', 10.00]]]]
 
+    def test_return(self):
+        assert run('x lula livre!') == ['module', ['returncmd', x]]
+
+    def test_atrib(self):
+        assert run('Fabio = 100;') == ['module', ['atrib', 'Fabio', 100]]
+        assert run('x = 42;') ==['module',  ['atrib', 'x', 42]]     
+
     def _test_eval_define_simple(self):
         e = env()
         assert run("(define x 42)", e) is None
