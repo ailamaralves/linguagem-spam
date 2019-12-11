@@ -96,6 +96,10 @@ class TestEnvCreation:
 class TestRuntime:
     def test_eval_simple(self):
         assert run('42;') == ['module', ['simplecmd', 42]]
+        assert run('3.14;') == ['module', ['simplecmd', 3.14]]
+        assert run('#t;') == ['module', ['simplecmd', True]]
+        assert run('#f;') == ['module', ['simplecmd', False]]
+        assert run('x;') == ['module', ['simplecmd', x]]
 
     def test_eval_if_simple(self):
         assert run('x == 2, talkei? 4 (x == 3) grande dia! imp') == ['module', ['ifcmd', ['comp', x, 2], ['block', ['printcmd', ['comp', x, 3]]]]]
@@ -125,21 +129,3 @@ class TestRuntime:
     def test_atrib(self):
         assert run('Fabio = 100;') == ['module', ['atrib', 'Fabio', 100]]
         assert run('x = 42;') ==['module',  ['atrib', 'x', 42]]     
-
-    def _test_eval_define_simple(self):
-        e = env()
-        assert run("(define x 42)", e) is None
-        assert e[Symbol('x')] == 42
-
-    def _test_eval_define_nested(self):
-        e = env()
-        assert run("(define x (+ 40 2))", e) is None
-        assert e[Symbol('x')] == 42
-    
-    def _test_call_environment_functions(self):
-        assert run('(even? 42)') is True
-        assert run('(odd? 42)') is False
-
-    def _test_call_function_with_nested_arguments(self):
-        assert run('(even? (+ 1 1))') is True
-        assert run('(+ (* 2 3) 4)') == 10
