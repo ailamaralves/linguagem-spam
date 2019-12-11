@@ -97,8 +97,8 @@ class TestRuntime:
     def test_eval_simple(self):
         assert run('42;') == ['module', ['simplecmd', 42]]
         assert run('3.14;') == ['module', ['simplecmd', 3.14]]
-        assert run('#t;') == ['module', ['simplecmd', True]]
-        assert run('#f;') == ['module', ['simplecmd', False]]
+        assert run('#lavajato;') == ['module', ['simplecmd', True]]
+        assert run('#corrucao;') == ['module', ['simplecmd', False]]
         assert run('x;') == ['module', ['simplecmd', x]]
 
     def test_eval_if_simple(self):
