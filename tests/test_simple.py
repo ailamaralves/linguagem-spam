@@ -113,6 +113,9 @@ class TestRuntime:
         assert run('(if (odd? 1) (+ 40 2) (+ 1 1))') == 42
         assert run('(if (even? 1) (+ 40 2) (+ 1 1))') == 2
 
+    def test_eval_while(self):
+        assert run('(x < 5) gloria a deux!') == ['module', ['whilecmd', ['comp', x, 5]]]
+
     def _test_eval_define_simple(self):
         e = env()
         assert run("(define x 42)", e) is None
