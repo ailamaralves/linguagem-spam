@@ -21,6 +21,7 @@ whilecmd : "(" expr ")" "gloria" "a" "deux" "!"
 returncmd : expr "lula" "livre" "!"
 
 printcmd : "(" expr ")" "grande" "dia" "!"
+         | "(" atom ")" "grande" "dia" "!"
 
 defcmd : "repare" "bem" atom "(" atom ")" ":" block
 

@@ -97,9 +97,13 @@ class TestRuntime:
     def test_eval_simple(self):
         assert run('42;') == ['module', ['simplecmd', 42]]
 
-    def _test_eval_if_simple(self):
-        assert check_print('x == 2, talkei? 4 ()"hello") grande dia! imp')
-        assert run('x == 2, talkei? 4 x = 52') == 0
+    def test_eval_if_simple(self):
+        assert run('x == 2, talkei? 4 (x == 3) grande dia! imp') == ['module', ['ifcmd', ['comp', x, 2], ['block', ['printcmd', ['comp', x, 3]]]]]
+        assert run('x == 2, talkei? 4 x = 52; imp') == ['module', ['ifcmd', ['comp', x, 2], ['block', ['atrib', 'x', 52]]]]
+
+    def test_eval_else_simple(self):
+        assert run('ele não! 4 x + 4; imp') == ['module', ['elsecmd', ['block', ['simplecmd', ['operation', x, 4]]]]]
+        assert run('ele não! 4 (x) grande dia! imp') == ['module', ['elsecmd',['block', ['printcmd', x]]]]
 
     def _test_eval_if_nested(self):
         assert run('(if (odd? 1) (+ 40 2) (+ 1 1))') == 42
