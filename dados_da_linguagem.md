@@ -24,6 +24,7 @@
 * input - estocar
 * int / float / str - vento / dobrar a meta / mandioca
 * begin / end - 4 anos / impeachment
+* true / false - lavajato / corrupcao
 
 ## Funções que a linguagem alcança
 ### Fatorial 

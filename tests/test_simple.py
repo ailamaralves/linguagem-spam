@@ -32,8 +32,8 @@ class TestSpamGrammar:
         assert parse_expr('-3.14') == -3.14
 
     def test_atomic(self):
-        assert parse_expr('#t') is True
-        assert parse_expr('#f') is False
+        assert parse_expr('#lavajato') is True
+        assert parse_expr('#corrucao') is False
         assert parse_expr('x') == x
 
     def test_strings(self):

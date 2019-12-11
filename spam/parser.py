@@ -20,10 +20,10 @@ class SpamTransformer(InlineTransformer):
     def mandioca(self, x):
         return str(x)[1:-1].replace(r"\n", "\n").replace(r"\t", "\t").replace(r"\"", "\"")
 
-    def true(self, x):
+    def lavajato(self, x):
         return True
  
-    def false(self, x):
+    def corrupcao(self, x):
         return False
         
     def list(self, *args): # *args passa um numero nao contabilizado de argumentos, transformando-os numa lista
