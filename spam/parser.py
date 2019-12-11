@@ -41,8 +41,8 @@ class SpamTransformer(InlineTransformer):
     def forcmd(self, name, expr):
         return ['forcmd', str(name), expr] 
 
-    def whilecmd(self, expr):
-        return ['whilecmd', expr] 
+    def whilecmd(self, expr, block):
+        return ['whilecmd', expr, block] 
 
     def returncmd(self, expr):
         return ['returncmd', expr] 

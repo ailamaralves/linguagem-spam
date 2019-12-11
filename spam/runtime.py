@@ -35,6 +35,11 @@ def eval(x, env):
         print(eval(expr, env))
         return
 
+    elif head == 'returncmd':
+        expr = args[0]
+        eval(expr, env)
+        return 
+
     elif head == 'module':
         v = None
         for arg in args:
