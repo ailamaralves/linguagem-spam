@@ -116,6 +116,9 @@ class TestRuntime:
     def test_eval_while(self):
         assert run('(x < 5) gloria a deux!') == ['module', ['whilecmd', ['comp', x, 5]]]
 
+    def test_def(self):
+        assert run('repare bem y (x): 4 nota = 10.00; imp') ==['module', ['defcmd', y, x, ['block', ['atrib', 'nota', 10.00]]]]
+
     def _test_eval_define_simple(self):
         e = env()
         assert run("(define x 42)", e) is None
