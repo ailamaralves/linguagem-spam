@@ -105,6 +105,10 @@ class TestRuntime:
         assert run('ele não! 4 x + 4; imp') == ['module', ['elsecmd', ['block', ['simplecmd', ['operation', x, 4]]]]]
         assert run('ele não! 4 (x) grande dia! imp') == ['module', ['elsecmd',['block', ['printcmd', x]]]]
 
+    def test_eval_for(self):
+        assert run('companheiro, x em y é golpe!') == ['module', ['forcmd', 'x', y]] 
+        assert run('companheiro, nota em x é golpe!') == ['module', ['forcmd', 'nota', x]]
+
     def _test_eval_if_nested(self):
         assert run('(if (odd? 1) (+ 40 2) (+ 1 1))') == 42
         assert run('(if (even? 1) (+ 40 2) (+ 1 1))') == 2
