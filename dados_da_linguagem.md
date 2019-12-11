@@ -135,4 +135,20 @@ companheiro, n em nomes é golpe!
 	(n) grande dia!
 imp
 ```
+### While
+
+* Em python:
+```
+while (x < 5):
+	print(x)
+```
+
+* Em spam:
+
+```
+(x < 5) gloria a deux!
+4
+	(x) grande dia!
+imp
+```
 
