@@ -33,7 +33,7 @@ class TestSpamGrammar:
 
     def test_atomic(self):
         assert parse_expr('#lavajato') is True
-        assert parse_expr('#corrucao') is False
+        assert parse_expr('#corrupcao') is False
         assert parse_expr('x') == x
 
     def test_strings(self):
@@ -67,7 +67,7 @@ class TestSpamGrammar:
         assert parse_cmd('ele não! 4 x = 2; imp') == ['elsecmd', ['block', ['atrib', 'x', 2]]]
 
     def test_return(self):
-        assert parse_cmd('#t lula livre!') == ['returncmd', True]
+        assert parse_cmd('#lavajato lula livre!') == ['returncmd', True]
         assert parse_cmd('2 lula livre!') == ['returncmd', 2]
         assert parse_cmd('x lula livre!') == ['returncmd', x]
 
@@ -98,7 +98,7 @@ class TestRuntime:
         assert run('42;') == ['module', ['simplecmd', 42]]
         assert run('3.14;') == ['module', ['simplecmd', 3.14]]
         assert run('#lavajato;') == ['module', ['simplecmd', True]]
-        assert run('#corrucao;') == ['module', ['simplecmd', False]]
+        assert run('#corrupcao;') == ['module', ['simplecmd', False]]
         assert run('x;') == ['module', ['simplecmd', x]]
 
     def test_eval_if_simple(self):
