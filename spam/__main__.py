@@ -15,12 +15,13 @@ def main(file, parse):
             src = input('> ')
             if not src and input('sair? [y/n]').lower() == 'y':
                 break
-            ast = parse_src(src)
-            print(ast.pretty())
-            #try:
-            #    print(eval(ast, e))
-            #except Exception as exc:
-            #    print(exc.__class__.__name__, exc)
+            try:
+                ast = parse_src(src)
+                v = eval(ast, e)
+                if v is not None:
+                    print(v)
+            except Exception as exc:
+                print(exc.__class__.__name__, exc)
     else:
         ast = parse_src(file.read())
         if parse:

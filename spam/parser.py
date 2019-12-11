@@ -33,7 +33,7 @@ class SpamTransformer(InlineTransformer):
         return ['simplecmd', expr] 
 
     def ifcmd(self, expr, block, elsecmd=None):
-        return ['ifcmd', expr, block]
+        return ['ifcmd', expr, block, elsecmd]
 
     def elsecmd(self, block):
         return ['elsecmd', block] 

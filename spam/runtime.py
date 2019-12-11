@@ -10,27 +10,36 @@ def eval(x, env):
     """
     Avalia expressão no ambiente de execução dado.
     """
-    
     # Cria ambiente padrão, caso o usuário não passe o argumento opcional "env"
     if env is None:
         env = ChainMap({}, global_env)
-        return x
     
     # Avalia tipos atômicos
     if isinstance(x, (int, float, bool, str)):
         return x
 
     # Avalia formas especiais e listas
-    # head, *args = x
+    head, *args = x
 
     # Comando (if <test> <then> <other>)
     # Ex: (if (even? x) (quotient x 2) x)
-    # if head == Symbol.IF:
-    #     cond, a, b = args 
-    #     if eval(cond, env):
-    #         return eval(a, env)
-    #     else:
-    #         return eval(b, env)
+    if head == 'ifcmd':
+        cond, a, b = args 
+        if eval(cond, env):
+            return eval(a, env)
+        else:
+            return eval(b, env)
+
+    elif head == 'printcmd':
+        expr = args[0] 
+        print(eval(expr, env))
+        return
+
+    elif head == 'module':
+        v = None
+        for arg in args:
+            v = eval(arg, env)
+        return v
 
     # Comando (define <symbol> <expression>)
     # Ex: (define x (+ 40 2))

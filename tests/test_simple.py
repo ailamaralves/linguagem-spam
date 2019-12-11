@@ -21,7 +21,8 @@ def parse_cmd(src):
 def check_print(src):
     stdout = io.StringIO()
     with contextlib.redirect_stdout(stdout):
-        run(src)
+        ast = parse(src)
+        eval(ast, None)
     return stdout.getvalue()
 
 
@@ -60,8 +61,8 @@ class TestSpamGrammar:
         assert parse_cmd('x = 2 + y;') == ['atrib', 'x', ["operation", 2, y]]
 
     def test_if(self):
-        assert parse_cmd('x == 2, talkei? 4 x = 42; imp') == ['ifcmd', ['comp', x, 2], ['block', ['atrib', 'x', 42]]]
-        assert parse_cmd('y == 3, talkei? 4 x = 53; imp ele não! 4 x > y; imp') == ['ifcmd', ['comp', y, 3], ['block', ['atrib', 'x', 53]]]
+        assert parse_cmd('x == 2, talkei? 4 x = 42; imp') == ['ifcmd', ['comp', x, 2], ['block', ['atrib', 'x', 42]], None]
+        assert parse_cmd('y == 3, talkei? 4 x = 53; imp ele não! 4 x > y; imp') == ['ifcmd', ['comp', y, 3], ['block', ['atrib', 'x', 53]], 'elsecmd']
 
     def test_else(self):
         assert parse_cmd('ele não! 4 x = 2; imp') == ['elsecmd', ['block', ['atrib', 'x', 2]]]
@@ -128,4 +129,7 @@ class TestRuntime:
 
     def test_atrib(self):
         assert run('Fabio = 100;') == ['module', ['atrib', 'Fabio', 100]]
-        assert run('x = 42;') ==['module',  ['atrib', 'x', 42]]     
+        assert run('x = 42;') ==['module',  ['atrib', 'x', 42]]    
+
+    def test_print(self):
+        assert check_print('("hello world") grande dia!') == 'hello world\n'
