@@ -62,7 +62,8 @@ class TestSpamGrammar:
 
     def test_if(self):
         assert parse_cmd('x == 2, talkei? 4 x = 42; imp') == ['ifcmd', ['comp', x, 2], ['block', ['atrib', 'x', 42]], None]
-        assert parse_cmd('y == 3, talkei? 4 x = 53; imp ele não! 4 x > y; imp') == ['ifcmd', ['comp', y, 3], ['block', ['atrib', 'x', 53]], 'elsecmd']
+        assert parse_cmd('y == 3, talkei? 4 x = 53; imp ele não! 4 x > y; imp') == ['ifcmd', ['comp', y, 3], ['block', ['atrib', 'x', 53]], ['elsecmd', ['block', ['simplecmd', ['comp', x, y]]]]]
+
 
     def test_return(self):
         assert parse_cmd('#lavajato lula livre!') == ['returncmd', True]
@@ -76,8 +77,8 @@ class TestSpamGrammar:
         assert parse_cmd('repare bem x (1): 4 x = 42; imp') == ['defcmd', x, 1, ['block', ['atrib','x', 42]]]
 
     def test_for(self):
-        assert parse_cmd('companheiro , teste em x < 2 é golpe!') == ['forcmd', 'teste', ['comp', x, 2]]
-        assert parse_cmd('companheiro , lista em y < x é golpe!') == ['forcmd', 'lista', ['comp', y, x]]
+        assert parse_cmd('companheiro, teste em x < 2 é golpe! 4 (x) grande dia! imp') == ['forcmd', 'teste', ['comp', x, 2], ['block', ['printcmd', x]]]
+        assert parse_cmd('companheiro, lista em y < x é golpe! 4 y = x; imp') == ['forcmd', 'lista', ['comp', y, x], ['block', ['atrib', 'y', x]]]
 
     def test_while(self):
         assert parse_cmd('(x > 2) gloria a deux! 4 (1 + 1) grande dia! imp ') == ['whilecmd', ['comp', x, 2], ['block', ['printcmd', ['operation', 1, 1]]]]

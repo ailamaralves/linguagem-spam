@@ -38,8 +38,8 @@ class SpamTransformer(InlineTransformer):
     def elsecmd(self, block):
         return ['elsecmd', block] 
 
-    def forcmd(self, name, expr):
-        return ['forcmd', str(name), expr] 
+    def forcmd(self, name, expr, block):
+        return ['forcmd', str(name), expr, block] 
 
     def whilecmd(self, expr, block):
         return ['whilecmd', expr, block] 
