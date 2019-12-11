@@ -14,6 +14,7 @@ def eval(x, env):
     # Cria ambiente padrão, caso o usuário não passe o argumento opcional "env"
     if env is None:
         env = ChainMap({}, global_env)
+        return x
     
     # Avalia tipos atômicos
     if isinstance(x, (int, float, bool, str)):
