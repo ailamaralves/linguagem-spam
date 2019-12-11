@@ -6,7 +6,7 @@ from types import MappingProxyType
 from .symbol import Symbol
 
 
-def eval(x, env=None):
+def eval(x, env):
     """
     Avalia expressão no ambiente de execução dado.
     """
@@ -16,64 +16,62 @@ def eval(x, env=None):
         env = ChainMap({}, global_env)
     
     # Avalia tipos atômicos
-    if isinstance(x, Symbol):
-        return env[x]
-    elif isinstance(x, (int, float, bool, str)):
+    if isinstance(x, (int, float, bool, str)):
         return x
 
     # Avalia formas especiais e listas
-    head, *args = x
+    # head, *args = x
 
     # Comando (if <test> <then> <other>)
     # Ex: (if (even? x) (quotient x 2) x)
-    if head == Symbol.IF:
-        cond, a, b = args 
-        if eval(cond, env):
-            return eval(a, env)
-        else:
-            return eval(b, env)
+    # if head == Symbol.IF:
+    #     cond, a, b = args 
+    #     if eval(cond, env):
+    #         return eval(a, env)
+    #     else:
+    #         return eval(b, env)
 
     # Comando (define <symbol> <expression>)
     # Ex: (define x (+ 40 2))
-    elif head == Symbol.DEFINE:
-        symb, expr = args
-        env[symb] = result = eval(expr, env)
-        return None
+    # elif head == Symbol.DEFINE:
+    #     symb, expr = args
+    #     env[symb] = result = eval(expr, env)
+    #     return None
         
 
     # Comando (quote <expression>)
     # (quote (1 2 3))
-    elif head == Symbol.QUOTE:
-        (_, expr) = x
-        return expr
+    # elif head == Symbol.QUOTE:
+    #     (_, expr) = x
+    #     return expr
 
     # Comando (let <expression> <expression>)
     # (let ((x 1) (y 2)) (+ x y))
-    elif head == Symbol.LET:
-        (equal, expr) = args # expr1 e expr2 = list
-        local = ChainMap({}, env)
-        return NotImplemented
+    # elif head == Symbol.LET:
+    #     (equal, expr) = args # expr1 e expr2 = list
+    #     local = ChainMap({}, env)
+    #     return NotImplemented
 
     # Comando (lambda <vars> <body>)
     # (lambda (x 1) (+ x y))
-    elif head == Symbol.LAMBDA:
-        (names, body) = args
+    # elif head == Symbol.LAMBDA:
+    #     (names, body) = args
 
         #if not all([isinstance(y, (int, float, bool, str)) for y in names]):
         #     raise TypeError
 
-        def proc(*args):
-            local = dict(zip(names, args))
-            return eval(body, ChainMap(local, env))
+        # def proc(*args):
+        #     local = dict(zip(names, args))
+        #     return eval(body, ChainMap(local, env))
 
-        return proc
+        # return proc
 
     # Lista/chamada de funções
     # (sqrt 4)
-    else:
-        proc = eval(head, env)
-        args = (eval(args, env) for args in x[1:])
-        return proc(*args)
+    # else:
+    #     proc = eval(head, env)
+    #     args = (eval(args, env) for args in x[1:])
+    #     return proc(*args)
 
 
 #

@@ -61,6 +61,10 @@ class TestSpamGrammar:
 
     def test_if(self):
         assert parse_cmd('x == 2, talkei? 4 x = 42; imp') == ['ifcmd', ['comp', x, 2], ['block', ['atrib', 'x', 42]]]
+        assert parse_cmd('y == 3, talkei? 4 x = 53; imp ele não! 4 x > y; imp') == ['ifcmd', ['comp', y, 3], ['block', ['atrib', 'x', 53]]]
+
+    def test_else(self):
+        assert parse_cmd('ele não! 4 x = 2; imp') == ['elsecmd', ['block', ['atrib', 'x', 2]]]
 
     def test_return(self):
         assert parse_cmd('#t lula livre!') == ['returncmd', True]
@@ -81,9 +85,8 @@ class TestSpamGrammar:
         assert parse_cmd('(x > 2) gloria a deux!') == ['whilecmd', ['comp', x, 2]]
         assert parse_cmd('(y == 0) gloria a deux!') == ['whilecmd', ['comp', y, 0]]
 
-
 class TestEnvCreation:
-    def _test_env_creation(self):
+    def test_env_creation(self):
         assert env() == global_env
         assert set(env({var.x: 42})).issuperset(set(global_env))
         assert env({var.x: 42})[var.x] == 42
@@ -92,7 +95,7 @@ class TestEnvCreation:
 
 class TestRuntime:
     def _test_eval_simple(self):
-        assert run('42') == 42
+        assert run('42;') == 42
 
     def _test_eval_if_simple(self):
         assert check_print('x == 2, talkei? 4 ()"hello") grande dia! imp')
